@@ -21,6 +21,17 @@ export class MainMenu extends Scene
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
         }).setDepth(100).setOrigin(0.5);
+
+        const play = this.add.text(512, 560, 'Play', {
+            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
+            stroke: '#000000', strokeThickness: 8,
+            align: 'center'
+        }).setDepth(100).setOrigin(0.5);
+
+        play.setInteractive()
+        play.on('pointerover',() => {play.setFontSize(42);document.body.style.cursor = 'pointer'})
+        play.on('pointerout',() => {play.setFontSize(38);document.body.style.cursor = 'default'})
+        play.on('pointerdown',() => {this.changeScene();document.body.style.cursor = 'default'})
         
         EventBus.emit('current-scene-ready', this);
     }

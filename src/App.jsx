@@ -11,6 +11,7 @@ function App ()
     //  References to the PhaserGame component (game and scene are exposed)
     const phaserRef = useRef();
     const [spritePosition, setSpritePosition] = useState({ x: 0, y: 0 });
+    const [score, setScore] = useState(0);
 
     const changeScene = () => {
 
@@ -70,6 +71,11 @@ function App ()
         
     }
 
+    const handleScoreChange = (score) => {
+        // Update your component's state with the new score
+        setScore(score);
+      };
+
     return (
         <div id="app">
             <PhaserGame ref={phaserRef} currentActiveScene={currentScene} />
@@ -80,8 +86,8 @@ function App ()
                 <div>
                     <button disabled={canMoveSprite} className="button" onClick={moveSprite}>Toggle Movement</button>
                 </div>
-                <div className="spritePosition">Sprite Position:
-                    <pre>{`{\n  x: ${spritePosition.x}\n  y: ${spritePosition.y}\n}`}</pre>
+                <div className="spritePosition">Score:
+                    <pre>{`{\n  score: ${score}\n}`}</pre>
                 </div>
                 <div>
                     <button className="button" onClick={addSprite}>Add New Sprite</button>
